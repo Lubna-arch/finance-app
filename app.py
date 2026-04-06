@@ -74,7 +74,7 @@ def create_app():
 if __name__ == "__main__":
     init_db()
     app = create_app()
+
+    from waitress import serve
     print("\n🚀 Finance API running at http://127.0.0.1:8000")
-    print("🔐 Login via POST /auth/login to start a session")
-    print("📖 Or pass X-User-ID header directly for quick API access\n")
-    app.run(debug=True, host="0.0.0.0", port=8000)
+    serve(app, host="0.0.0.0", port=8000)
