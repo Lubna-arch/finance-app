@@ -1,0 +1,3181 @@
+{
+  "info": {
+    "_postman_id": "2c416839-6948-48ba-9fbc-bec843f6d49f",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53762068",
+    "_collection_link": "https://go.postman.co/collection/53762068-2c416839-6948-48ba-9fbc-bec843f6d49f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Post data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/records",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "records"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": [
+        {
+          "name": "login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"remember_me\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:17:24 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "203"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "finance_user=1; Expires=Sun, 12 Apr 2026 17:17:24 GMT; Max-Age=604800; HttpOnly; Path=/; SameSite=Lax"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKZJA.u4xJHi6VqTwRu3Afmc4ajkEg0tU; Expires=Sun, 12 Apr 2026 17:17:24 GMT; HttpOnly; Path=/; SameSite=Lax"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"cookie\": \"set\",\n    \"message\": \"Welcome, Alice Admin! You are logged in.\",\n    \"session\": \"active\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Alice Admin\",\n        \"role\": \"admin\",\n        \"status\": \"active\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "session_auth",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/auth/me",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "session_auth",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:32:27 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "388"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKcqw.J3yOVn6tjxFN7-mX4G4W4bQiMuc; Expires=Sun, 12 Apr 2026 17:32:27 GMT; HttpOnly; Path=/; SameSite=Lax"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"auth_method\": \"session\",\n    \"logged_in\": true,\n    \"permissions\": {\n        \"create_records\": true,\n        \"create_users\": true,\n        \"delete_records\": true,\n        \"edit_records\": true,\n        \"export_csv\": true,\n        \"manage_users\": true,\n        \"view_dashboard\": true,\n        \"view_records\": true\n    },\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Alice Admin\",\n        \"role\": \"admin\",\n        \"status\": \"active\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "summary_overview",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/summary/overview",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "overview"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "summary_overview",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/summary/overview",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "overview"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:34:18 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1615"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKdGg.7g93rPK0iXrl4MG07wgPma4C2o4; Expires=Sun, 12 Apr 2026 17:34:18 GMT; HttpOnly; Path=/; SameSite=Lax"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"financials\": {\n        \"net_balance\": 16839.5,\n        \"status\": \"surplus\",\n        \"total_expense\": 4460.5,\n        \"total_income\": 21300,\n        \"total_records\": 14\n    },\n    \"highlights\": {\n        \"best_income_month\": {\n            \"month\": \"2024-01\",\n            \"total_income\": 8500\n        },\n        \"top_expense_category\": {\n            \"category\": \"Rent\",\n            \"total\": 2400\n        }\n    },\n    \"recent_transactions\": [\n        {\n            \"amount\": 900,\n            \"category\": \"Electronics\",\n            \"date\": \"2024-03-20\",\n            \"id\": 14,\n            \"note\": \"Headphones\",\n            \"type\": \"expense\",\n            \"user_name\": \"Bob Analyst\"\n        },\n        {\n            \"amount\": 2000,\n            \"category\": \"Consulting\",\n            \"date\": \"2024-03-15\",\n            \"id\": 13,\n            \"note\": \"Strategy workshop\",\n            \"type\": \"income\",\n            \"user_name\": \"Bob Analyst\"\n        },\n        {\n            \"amount\": 60,\n            \"category\": \"Subscription\",\n            \"date\": \"2024-03-10\",\n            \"id\": 11,\n            \"note\": \"Streaming services\",\n            \"type\": \"expense\",\n            \"user_name\": \"Vera Viewer\"\n        },\n        {\n            \"amount\": 5000,\n            \"category\": \"Salary\",\n            \"date\": \"2024-03-05\",\n            \"id\": 12,\n            \"note\": \"March salary\",\n            \"type\": \"income\",\n            \"user_name\": \"Alice Admin\"\n        },\n        {\n            \"amount\": 150,\n            \"category\": \"Groceries\",\n            \"date\": \"2024-03-03\",\n            \"id\": 10,\n            \"note\": null,\n            \"type\": \"expense\",\n            \"user_name\": \"Vera Viewer\"\n        }\n    ],\n    \"record_health\": {\n        \"active_records\": 14,\n        \"deleted_records\": 0,\n        \"total_records_including_deleted\": 14\n    },\n    \"scope\": \"all_users\",\n    \"users\": {\n        \"active_users\": 3,\n        \"inactive_users\": 1,\n        \"total_users\": 4\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "spending_alerts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/summary/alerts?threshold=1000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "alerts"
+          ],
+          "query": [
+            {
+              "key": "threshold",
+              "value": "1000"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "spending_alerts",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/summary/alerts?threshold=1000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "alerts"
+              ],
+              "query": [
+                {
+                  "key": "threshold",
+                  "value": "1000"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:35:28 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "499"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKdYA.9smHPwox-t0J-jl0uAxp4Vu-tw4; Expires=Sun, 12 Apr 2026 17:35:28 GMT; HttpOnly; Path=/; SameSite=Lax"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"alerts_count\": 2,\n    \"message\": \"2 user(s) exceeded the ₹1,000.00 expense threshold\",\n    \"threshold\": 1000,\n    \"users_flagged\": [\n        {\n            \"exceeded_by\": 1600.5,\n            \"expense_records\": 3,\n            \"role\": \"admin\",\n            \"total_expense\": 2600.5,\n            \"user_id\": 1,\n            \"user_name\": \"Alice Admin\"\n        },\n        {\n            \"exceeded_by\": 650,\n            \"expense_records\": 3,\n            \"role\": \"analyst\",\n            \"total_expense\": 1650,\n            \"user_id\": 2,\n            \"user_name\": \"Bob Analyst\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "top_spenders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/summary/top-spenders",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "top-spenders"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "top_spenders",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/summary/top-spenders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "top-spenders"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:36:32 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1451"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKdoA.ePICSrA5MU16RcHCaghoHsx_7sc; Expires=Sun, 12 Apr 2026 17:36:32 GMT; HttpOnly; Path=/; SameSite=Lax"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"filter_category\": \"all\",\n    \"limit\": 5,\n    \"top_spenders\": [\n        {\n            \"avg_per_transaction\": 1200,\n            \"category\": \"Rent\",\n            \"last_transaction_date\": \"2024-02-10\",\n            \"rank\": 1,\n            \"role\": \"admin\",\n            \"total_spent\": 2400,\n            \"transaction_count\": 2,\n            \"user_id\": 1,\n            \"user_name\": \"Alice Admin\"\n        },\n        {\n            \"avg_per_transaction\": 900,\n            \"category\": \"Electronics\",\n            \"last_transaction_date\": \"2024-03-20\",\n            \"rank\": 2,\n            \"role\": \"analyst\",\n            \"total_spent\": 900,\n            \"transaction_count\": 1,\n            \"user_id\": 2,\n            \"user_name\": \"Bob Analyst\"\n        },\n        {\n            \"avg_per_transaction\": 450,\n            \"category\": \"Utilities\",\n            \"last_transaction_date\": \"2024-01-22\",\n            \"rank\": 3,\n            \"role\": \"analyst\",\n            \"total_spent\": 450,\n            \"transaction_count\": 1,\n            \"user_id\": 2,\n            \"user_name\": \"Bob Analyst\"\n        },\n        {\n            \"avg_per_transaction\": 300,\n            \"category\": \"Travel\",\n            \"last_transaction_date\": \"2024-02-18\",\n            \"rank\": 4,\n            \"role\": \"analyst\",\n            \"total_spent\": 300,\n            \"transaction_count\": 1,\n            \"user_id\": 2,\n            \"user_name\": \"Bob Analyst\"\n        },\n        {\n            \"avg_per_transaction\": 200.5,\n            \"category\": \"Groceries\",\n            \"last_transaction_date\": \"2024-01-15\",\n            \"rank\": 5,\n            \"role\": \"admin\",\n            \"total_spent\": 200.5,\n            \"transaction_count\": 1,\n            \"user_id\": 1,\n            \"user_name\": \"Alice Admin\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "logout",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": 1,\n  \"remember_me\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/auth/logout",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "logout"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"remember_me\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9",
+              "uuid": "ff8c1fb6-26e4-4f04-b829-0ec257a48fc0"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:17:24 GMT",
+              "uuid": "f6882b63-6b10-4c61-8598-4e98cee1b194"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "uuid": "75fddf3e-2e5c-4796-a97c-917696e2398c"
+            },
+            {
+              "key": "Content-Length",
+              "value": "203",
+              "uuid": "504d388b-a453-4e32-95b4-fedba13204f6"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "finance_user=1; Expires=Sun, 12 Apr 2026 17:17:24 GMT; Max-Age=604800; HttpOnly; Path=/; SameSite=Lax",
+              "uuid": "6b6d46e6-f498-41a3-91f7-276fa827f9a4"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKZJA.u4xJHi6VqTwRu3Afmc4ajkEg0tU; Expires=Sun, 12 Apr 2026 17:17:24 GMT; HttpOnly; Path=/; SameSite=Lax",
+              "uuid": "6b6d46e6-f498-41a3-91f7-276fa827f9a4"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie",
+              "uuid": "a1175c09-7aa5-4193-9702-b3f3481a6993"
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "uuid": "7eb32d88-e06e-4e05-9cc1-23c39dbdca55"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"cookie\": \"set\",\n    \"message\": \"Welcome, Alice Admin! You are logged in.\",\n    \"session\": \"active\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Alice Admin\",\n        \"role\": \"admin\",\n        \"status\": \"active\"\n    }\n}"
+        },
+        {
+          "name": "logout",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"remember_me\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/auth/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:39:03 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "103"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "finance_user=; Expires=Sun, 05 Apr 2026 17:39:03 GMT; Max-Age=0; Path=/"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; HttpOnly; Path=/; SameSite=Lax"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"cookie\": \"deleted\",\n    \"message\": \"Alice Admin logged out successfully.\",\n    \"session\": \"cleared\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "create_user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "create_user",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "status": "CREATED",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:43:46 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "114"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"created_at\": \"2026-04-05 17:43:46\",\n    \"id\": 5,\n    \"name\": \"John\",\n    \"role\": \"analyst\",\n    \"status\": \"active\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "all_users",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "export_csv",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/records/export",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "records",
+                "export"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9",
+              "uuid": "b77f8676-1128-4b48-b5ee-79b861154bca"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:26:00 GMT",
+              "uuid": "6602cf3e-8193-4136-b370-2565365d0824"
+            },
+            {
+              "key": "Content-Disposition",
+              "value": "attachment; filename=finance_records_export.csv",
+              "uuid": "6a412160-0c7d-414f-88b5-fc8f536e4d53"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/csv; charset=utf-8",
+              "uuid": "c6cf3b37-a59e-42b8-8028-c430f0d802fe"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1321",
+              "uuid": "9a8cd598-edda-40b1-9d5b-c9268f13e717"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie",
+              "uuid": "c73c7425-3368-4f01-8625-bd26f4194a8c"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKbKA.bIQAPjLh7whmOdNENEuXenrSnpQ; Expires=Sun, 12 Apr 2026 17:26:00 GMT; HttpOnly; Path=/; SameSite=Lax",
+              "uuid": "2afb1fad-8adf-47c4-bdc8-c6f658a7788b"
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "uuid": "3ba7ce65-0627-45b2-a277-5fddeaad1321"
+            }
+          ],
+          "cookie": [],
+          "body": "ID,User,Role,Amount,Type,Category,Date,Note,Created At\r\n14,Bob Analyst,analyst,900.0,expense,Electronics,2024-03-20,Headphones,2026-04-04 15:25:07\r\n13,Bob Analyst,analyst,2000.0,income,Consulting,2024-03-15,Strategy workshop,2026-04-04 15:25:07\r\n11,Vera Viewer,viewer,60.0,expense,Subscription,2024-03-10,Streaming services,2026-04-04 15:25:07\r\n12,Alice Admin,admin,5000.0,income,Salary,2024-03-05,March salary,2026-04-04 15:25:07\r\n10,Vera Viewer,viewer,150.0,expense,Groceries,2024-03-03,,2026-04-04 15:25:07\r\n9,Alice Admin,admin,800.0,income,Bonus,2024-02-25,Performance bonus,2026-04-04 15:25:07\r\n8,Bob Analyst,analyst,300.0,expense,Travel,2024-02-18,Train tickets,2026-04-04 15:25:07\r\n7,Alice Admin,admin,1200.0,expense,Rent,2024-02-10,Monthly rent,2026-04-04 15:25:07\r\n6,Alice Admin,admin,5000.0,income,Salary,2024-02-05,February salary,2026-04-04 15:25:07\r\n5,Bob Analyst,analyst,450.0,expense,Utilities,2024-01-22,Electricity & water,2026-04-04 15:25:07\r\n4,Bob Analyst,analyst,3500.0,income,Freelance,2024-01-20,Website project,2026-04-04 15:25:07\r\n3,Alice Admin,admin,200.5,expense,Groceries,2024-01-15,Weekly groceries,2026-04-04 15:25:07\r\n2,Alice Admin,admin,1200.0,expense,Rent,2024-01-10,Monthly rent,2026-04-04 15:25:07\r\n1,Alice Admin,admin,5000.0,income,Salary,2024-01-05,January salary,2026-04-04 15:25:07\r\n"
+        },
+        {
+          "name": "all_users",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:47:39 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "777"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"total\": 5,\n    \"users\": [\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 1,\n            \"name\": \"Alice Admin\",\n            \"role\": \"admin\",\n            \"status\": \"active\"\n        },\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 2,\n            \"name\": \"Bob Analyst\",\n            \"role\": \"analyst\",\n            \"status\": \"active\"\n        },\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 3,\n            \"name\": \"Vera Viewer\",\n            \"role\": \"viewer\",\n            \"status\": \"active\"\n        },\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 4,\n            \"name\": \"Dave Analyst\",\n            \"role\": \"analyst\",\n            \"status\": \"inactive\"\n        },\n        {\n            \"created_at\": \"2026-04-05 17:43:46\",\n            \"id\": 5,\n            \"name\": \"John\",\n            \"role\": \"analyst\",\n            \"status\": \"active\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "filer_users",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/users?role=analyst&",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "analyst"
+            },
+            {
+              "key": "",
+              "value": null,
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "export_csv",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/records/export",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "records",
+                "export"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9",
+              "uuid": "b77f8676-1128-4b48-b5ee-79b861154bca"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:26:00 GMT",
+              "uuid": "6602cf3e-8193-4136-b370-2565365d0824"
+            },
+            {
+              "key": "Content-Disposition",
+              "value": "attachment; filename=finance_records_export.csv",
+              "uuid": "6a412160-0c7d-414f-88b5-fc8f536e4d53"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/csv; charset=utf-8",
+              "uuid": "c6cf3b37-a59e-42b8-8028-c430f0d802fe"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1321",
+              "uuid": "9a8cd598-edda-40b1-9d5b-c9268f13e717"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie",
+              "uuid": "c73c7425-3368-4f01-8625-bd26f4194a8c"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKbKA.bIQAPjLh7whmOdNENEuXenrSnpQ; Expires=Sun, 12 Apr 2026 17:26:00 GMT; HttpOnly; Path=/; SameSite=Lax",
+              "uuid": "2afb1fad-8adf-47c4-bdc8-c6f658a7788b"
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "uuid": "3ba7ce65-0627-45b2-a277-5fddeaad1321"
+            }
+          ],
+          "cookie": [],
+          "body": "ID,User,Role,Amount,Type,Category,Date,Note,Created At\r\n14,Bob Analyst,analyst,900.0,expense,Electronics,2024-03-20,Headphones,2026-04-04 15:25:07\r\n13,Bob Analyst,analyst,2000.0,income,Consulting,2024-03-15,Strategy workshop,2026-04-04 15:25:07\r\n11,Vera Viewer,viewer,60.0,expense,Subscription,2024-03-10,Streaming services,2026-04-04 15:25:07\r\n12,Alice Admin,admin,5000.0,income,Salary,2024-03-05,March salary,2026-04-04 15:25:07\r\n10,Vera Viewer,viewer,150.0,expense,Groceries,2024-03-03,,2026-04-04 15:25:07\r\n9,Alice Admin,admin,800.0,income,Bonus,2024-02-25,Performance bonus,2026-04-04 15:25:07\r\n8,Bob Analyst,analyst,300.0,expense,Travel,2024-02-18,Train tickets,2026-04-04 15:25:07\r\n7,Alice Admin,admin,1200.0,expense,Rent,2024-02-10,Monthly rent,2026-04-04 15:25:07\r\n6,Alice Admin,admin,5000.0,income,Salary,2024-02-05,February salary,2026-04-04 15:25:07\r\n5,Bob Analyst,analyst,450.0,expense,Utilities,2024-01-22,Electricity & water,2026-04-04 15:25:07\r\n4,Bob Analyst,analyst,3500.0,income,Freelance,2024-01-20,Website project,2026-04-04 15:25:07\r\n3,Alice Admin,admin,200.5,expense,Groceries,2024-01-15,Weekly groceries,2026-04-04 15:25:07\r\n2,Alice Admin,admin,1200.0,expense,Rent,2024-01-10,Monthly rent,2026-04-04 15:25:07\r\n1,Alice Admin,admin,5000.0,income,Salary,2024-01-05,January salary,2026-04-04 15:25:07\r\n"
+        },
+        {
+          "name": "all_users",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9",
+              "uuid": "9266c911-a119-48d4-a8fe-d1c199c31dca"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:47:39 GMT",
+              "uuid": "c52e3926-45f7-4b2c-9c28-41858e3db370"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "uuid": "ecb157e6-735f-4f98-be90-b2b9aedb0f94"
+            },
+            {
+              "key": "Content-Length",
+              "value": "777",
+              "uuid": "8b1c2c29-424a-4580-8256-cff67adcb49d"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie",
+              "uuid": "ef73424b-801a-4280-b895-cfbe860a17a2"
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "uuid": "42d8626d-050a-427f-a1eb-613129d352e3"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\n    \"total\": 5,\n    \"users\": [\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 1,\n            \"name\": \"Alice Admin\",\n            \"role\": \"admin\",\n            \"status\": \"active\"\n        },\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 2,\n            \"name\": \"Bob Analyst\",\n            \"role\": \"analyst\",\n            \"status\": \"active\"\n        },\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 3,\n            \"name\": \"Vera Viewer\",\n            \"role\": \"viewer\",\n            \"status\": \"active\"\n        },\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 4,\n            \"name\": \"Dave Analyst\",\n            \"role\": \"analyst\",\n            \"status\": \"inactive\"\n        },\n        {\n            \"created_at\": \"2026-04-05 17:43:46\",\n            \"id\": 5,\n            \"name\": \"John\",\n            \"role\": \"analyst\",\n            \"status\": \"active\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "filer_users",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/users?role=analyst&",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "role",
+                  "value": "analyst"
+                },
+                {
+                  "key": "",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:49:21 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "480"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"total\": 3,\n    \"users\": [\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 2,\n            \"name\": \"Bob Analyst\",\n            \"role\": \"analyst\",\n            \"status\": \"active\"\n        },\n        {\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"id\": 4,\n            \"name\": \"Dave Analyst\",\n            \"role\": \"analyst\",\n            \"status\": \"inactive\"\n        },\n        {\n            \"created_at\": \"2026-04-05 17:43:46\",\n            \"id\": 5,\n            \"name\": \"John\",\n            \"role\": \"analyst\",\n            \"status\": \"active\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "update_status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"inactive\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/users/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "3"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "update_status",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"inactive\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/users/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "3"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:53:01 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "122"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"created_at\": \"2026-04-04 15:25:07\",\n    \"id\": 3,\n    \"name\": \"Vera Viewer\",\n    \"role\": \"viewer\",\n    \"status\": \"inactive\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "create_records",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 5000,\n  \"type\": \"income\",\n  \"category\": \"Salary\",\n  \"date\": \"2024-04-01\",\n  \"user_id\": 2,\n  \"note\": \"April salary\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/records",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "records"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"remember_me\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9",
+              "uuid": "ba2396e0-e1ab-497e-bf7e-d70ffd316a7e"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:17:24 GMT",
+              "uuid": "efd2362f-3bcc-497c-8c91-78f3f0ee1490"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "uuid": "47937c2f-b3a6-4211-9a42-17f92cd282b6"
+            },
+            {
+              "key": "Content-Length",
+              "value": "203",
+              "uuid": "79328d54-51c8-45d1-850c-5fab87ad22a5"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "finance_user=1; Expires=Sun, 12 Apr 2026 17:17:24 GMT; Max-Age=604800; HttpOnly; Path=/; SameSite=Lax",
+              "uuid": "bac70942-b239-4006-99cf-7fc1ab9fde71"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKZJA.u4xJHi6VqTwRu3Afmc4ajkEg0tU; Expires=Sun, 12 Apr 2026 17:17:24 GMT; HttpOnly; Path=/; SameSite=Lax",
+              "uuid": "bac70942-b239-4006-99cf-7fc1ab9fde71"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie",
+              "uuid": "9d19d459-43fe-47a7-a3b1-c0c98bb83639"
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "uuid": "24ffc82b-2392-4d75-853c-fb6f33ff9c48"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"cookie\": \"set\",\n    \"message\": \"Welcome, Alice Admin! You are logged in.\",\n    \"session\": \"active\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Alice Admin\",\n        \"role\": \"admin\",\n        \"status\": \"active\"\n    }\n}"
+        },
+        {
+          "name": "create_records",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 5000,\n  \"type\": \"income\",\n  \"category\": \"Salary\",\n  \"date\": \"2024-04-01\",\n  \"user_id\": 2,\n  \"note\": \"April salary\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/records",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "records"
+              ]
+            }
+          },
+          "status": "CREATED",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:15:19 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "242"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"amount\": 5000,\n    \"category\": \"Salary\",\n    \"created_at\": \"2026-04-06 05:15:19\",\n    \"date\": \"2024-04-01\",\n    \"id\": 15,\n    \"is_deleted\": 0,\n    \"note\": \"April salary\",\n    \"type\": \"income\",\n    \"updated_at\": \"2026-04-06 05:15:19\",\n    \"user_id\": 2\n}"
+        }
+      ]
+    },
+    {
+      "name": "filter_records",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/records?type=expense&date_from=2024-01-01&date_to=2024-03-31",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "records"
+          ],
+          "query": [
+            {
+              "key": "type",
+              "value": "expense"
+            },
+            {
+              "key": "date_from",
+              "value": "2024-01-01"
+            },
+            {
+              "key": "date_to",
+              "value": "2024-03-31"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"remember_me\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9",
+              "uuid": "ba2396e0-e1ab-497e-bf7e-d70ffd316a7e"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 17:17:24 GMT",
+              "uuid": "efd2362f-3bcc-497c-8c91-78f3f0ee1490"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "uuid": "47937c2f-b3a6-4211-9a42-17f92cd282b6"
+            },
+            {
+              "key": "Content-Length",
+              "value": "203",
+              "uuid": "79328d54-51c8-45d1-850c-5fab87ad22a5"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "finance_user=1; Expires=Sun, 12 Apr 2026 17:17:24 GMT; Max-Age=604800; HttpOnly; Path=/; SameSite=Lax",
+              "uuid": "bac70942-b239-4006-99cf-7fc1ab9fde71"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "session=.eJyrVoovSC3KTcxLzStRsiopKk3VUSrKz0lVslJKTMnNzFPSUSotTi2Kz0xRsjKEsvMSc0HyjjmZyakKjmBVtQCLvBhj.adKZJA.u4xJHi6VqTwRu3Afmc4ajkEg0tU; Expires=Sun, 12 Apr 2026 17:17:24 GMT; HttpOnly; Path=/; SameSite=Lax",
+              "uuid": "bac70942-b239-4006-99cf-7fc1ab9fde71"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie",
+              "uuid": "9d19d459-43fe-47a7-a3b1-c0c98bb83639"
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "uuid": "24ffc82b-2392-4d75-853c-fb6f33ff9c48"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"cookie\": \"set\",\n    \"message\": \"Welcome, Alice Admin! You are logged in.\",\n    \"session\": \"active\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Alice Admin\",\n        \"role\": \"admin\",\n        \"status\": \"active\"\n    }\n}"
+        },
+        {
+          "name": "all_records",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/records",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "records"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9",
+              "uuid": "b14d8f91-41a3-4c5a-88ec-54207cc5bca6"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:16:39 GMT",
+              "uuid": "275da1e3-bd6f-49d5-80f6-9bc90f7618da"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "uuid": "89c84220-a4a7-4606-bb5a-99214fbf7bc5"
+            },
+            {
+              "key": "Content-Length",
+              "value": "4491",
+              "uuid": "653dfad7-2c8a-4203-8375-8825988288b5"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie",
+              "uuid": "cb147e28-e9b1-44d7-92b8-0da0387a6518"
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "uuid": "f8b66ffa-0358-4eb7-840f-5a78fcf64ac5"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\n    \"page\": 1,\n    \"page_size\": 20,\n    \"records\": [\n        {\n            \"amount\": 5000,\n            \"category\": \"Salary\",\n            \"created_at\": \"2026-04-06 05:15:19\",\n            \"date\": \"2024-04-01\",\n            \"id\": 15,\n            \"is_deleted\": 0,\n            \"note\": \"April salary\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-06 05:15:19\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 900,\n            \"category\": \"Electronics\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-20\",\n            \"id\": 14,\n            \"is_deleted\": 0,\n            \"note\": \"Headphones\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 2000,\n            \"category\": \"Consulting\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-15\",\n            \"id\": 13,\n            \"is_deleted\": 0,\n            \"note\": \"Strategy workshop\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 60,\n            \"category\": \"Subscription\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-10\",\n            \"id\": 11,\n            \"is_deleted\": 0,\n            \"note\": \"Streaming services\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 3\n        },\n        {\n            \"amount\": 5000,\n            \"category\": \"Salary\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-05\",\n            \"id\": 12,\n            \"is_deleted\": 0,\n            \"note\": \"March salary\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        },\n        {\n            \"amount\": 150,\n            \"category\": \"Groceries\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-03\",\n            \"id\": 10,\n            \"is_deleted\": 0,\n            \"note\": null,\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 3\n        },\n        {\n            \"amount\": 800,\n            \"category\": \"Bonus\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-02-25\",\n            \"id\": 9,\n            \"is_deleted\": 0,\n            \"note\": \"Performance bonus\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        },\n        {\n            \"amount\": 300,\n            \"category\": \"Travel\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-02-18\",\n            \"id\": 8,\n            \"is_deleted\": 0,\n            \"note\": \"Train tickets\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 1200,\n            \"category\": \"Rent\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-02-10\",\n            \"id\": 7,\n            \"is_deleted\": 0,\n            \"note\": \"Monthly rent\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        },\n        {\n            \"amount\": 5000,\n            \"category\": \"Salary\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-02-05\",\n            \"id\": 6,\n            \"is_deleted\": 0,\n            \"note\": \"February salary\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        },\n        {\n            \"amount\": 450,\n            \"category\": \"Utilities\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-01-22\",\n            \"id\": 5,\n            \"is_deleted\": 0,\n            \"note\": \"Electricity & water\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 3500,\n            \"category\": \"Freelance\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-01-20\",\n            \"id\": 4,\n            \"is_deleted\": 0,\n            \"note\": \"Website project\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 200.5,\n            \"category\": \"Groceries\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-01-15\",\n            \"id\": 3,\n            \"is_deleted\": 0,\n            \"note\": \"Weekly groceries\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        },\n        {\n            \"amount\": 1200,\n            \"category\": \"Rent\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-01-10\",\n            \"id\": 2,\n            \"is_deleted\": 0,\n            \"note\": \"Monthly rent\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        },\n        {\n            \"amount\": 5000,\n            \"category\": \"Salary\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-01-05\",\n            \"id\": 1,\n            \"is_deleted\": 0,\n            \"note\": \"January salary\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        }\n    ],\n    \"total\": 15,\n    \"total_pages\": 1\n}"
+        },
+        {
+          "name": "filter_records",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/records?type=expense&date_from=2024-01-01&date_to=2024-03-31",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "records"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "expense"
+                },
+                {
+                  "key": "date_from",
+                  "value": "2024-01-01"
+                },
+                {
+                  "key": "date_to",
+                  "value": "2024-03-31"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:18:57 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "2434"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"page\": 1,\n    \"page_size\": 20,\n    \"records\": [\n        {\n            \"amount\": 900,\n            \"category\": \"Electronics\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-20\",\n            \"id\": 14,\n            \"is_deleted\": 0,\n            \"note\": \"Headphones\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 60,\n            \"category\": \"Subscription\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-10\",\n            \"id\": 11,\n            \"is_deleted\": 0,\n            \"note\": \"Streaming services\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 3\n        },\n        {\n            \"amount\": 150,\n            \"category\": \"Groceries\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-03\",\n            \"id\": 10,\n            \"is_deleted\": 0,\n            \"note\": null,\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 3\n        },\n        {\n            \"amount\": 300,\n            \"category\": \"Travel\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-02-18\",\n            \"id\": 8,\n            \"is_deleted\": 0,\n            \"note\": \"Train tickets\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 1200,\n            \"category\": \"Rent\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-02-10\",\n            \"id\": 7,\n            \"is_deleted\": 0,\n            \"note\": \"Monthly rent\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        },\n        {\n            \"amount\": 450,\n            \"category\": \"Utilities\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-01-22\",\n            \"id\": 5,\n            \"is_deleted\": 0,\n            \"note\": \"Electricity & water\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 200.5,\n            \"category\": \"Groceries\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-01-15\",\n            \"id\": 3,\n            \"is_deleted\": 0,\n            \"note\": \"Weekly groceries\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        },\n        {\n            \"amount\": 1200,\n            \"category\": \"Rent\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-01-10\",\n            \"id\": 2,\n            \"is_deleted\": 0,\n            \"note\": \"Monthly rent\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 1\n        }\n    ],\n    \"total\": 8,\n    \"total_pages\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "pagination_records",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/records?page=1&page_size=3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "records"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "page_size",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "pagination_records",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/records?page=1&page_size=3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "records"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "page_size",
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:24:29 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "973"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"page\": 1,\n    \"page_size\": 3,\n    \"records\": [\n        {\n            \"amount\": 5000,\n            \"category\": \"Salary\",\n            \"created_at\": \"2026-04-06 05:15:19\",\n            \"date\": \"2024-04-01\",\n            \"id\": 15,\n            \"is_deleted\": 0,\n            \"note\": \"April salary\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-06 05:15:19\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 900,\n            \"category\": \"Electronics\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-20\",\n            \"id\": 14,\n            \"is_deleted\": 0,\n            \"note\": \"Headphones\",\n            \"type\": \"expense\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        },\n        {\n            \"amount\": 2000,\n            \"category\": \"Consulting\",\n            \"created_at\": \"2026-04-04 15:25:07\",\n            \"date\": \"2024-03-15\",\n            \"id\": 13,\n            \"is_deleted\": 0,\n            \"note\": \"Strategy workshop\",\n            \"type\": \"income\",\n            \"updated_at\": \"2026-04-04 15:25:07\",\n            \"user_id\": 2\n        }\n    ],\n    \"total\": 15,\n    \"total_pages\": 5\n}"
+        }
+      ]
+    },
+    {
+      "name": "summary",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/summary/totals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "totals"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "summary",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/summary/totals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "totals"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:26:45 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "482"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"role\": \"admin\",\n        \"total_expense\": 2600.5,\n        \"total_income\": 15800,\n        \"total_records\": 7,\n        \"user_id\": 1,\n        \"user_name\": \"Alice Admin\"\n    },\n    {\n        \"role\": \"analyst\",\n        \"total_expense\": 1650,\n        \"total_income\": 10500,\n        \"total_records\": 6,\n        \"user_id\": 2,\n        \"user_name\": \"Bob Analyst\"\n    },\n    {\n        \"role\": \"viewer\",\n        \"total_expense\": 210,\n        \"total_income\": 0,\n        \"total_records\": 2,\n        \"user_id\": 3,\n        \"user_name\": \"Vera Viewer\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "net_balance",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/summary/balance",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "balance"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "net_balance",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/summary/balance",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "balance"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:28:03 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "426"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"net_balance\": 13199.5,\n        \"total_expense\": 2600.5,\n        \"total_income\": 15800,\n        \"user_id\": 1,\n        \"user_name\": \"Alice Admin\"\n    },\n    {\n        \"net_balance\": 8850,\n        \"total_expense\": 1650,\n        \"total_income\": 10500,\n        \"user_id\": 2,\n        \"user_name\": \"Bob Analyst\"\n    },\n    {\n        \"net_balance\": -210,\n        \"total_expense\": 210,\n        \"total_income\": 0,\n        \"user_id\": 3,\n        \"user_name\": \"Vera Viewer\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "category",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/summary/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "categories"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "category",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/summary/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "categories"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:29:32 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1388"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"average_amount\": 5000,\n        \"category\": \"Salary\",\n        \"record_count\": 4,\n        \"total_amount\": 20000,\n        \"type\": \"income\"\n    },\n    {\n        \"average_amount\": 3500,\n        \"category\": \"Freelance\",\n        \"record_count\": 1,\n        \"total_amount\": 3500,\n        \"type\": \"income\"\n    },\n    {\n        \"average_amount\": 1200,\n        \"category\": \"Rent\",\n        \"record_count\": 2,\n        \"total_amount\": 2400,\n        \"type\": \"expense\"\n    },\n    {\n        \"average_amount\": 2000,\n        \"category\": \"Consulting\",\n        \"record_count\": 1,\n        \"total_amount\": 2000,\n        \"type\": \"income\"\n    },\n    {\n        \"average_amount\": 900,\n        \"category\": \"Electronics\",\n        \"record_count\": 1,\n        \"total_amount\": 900,\n        \"type\": \"expense\"\n    },\n    {\n        \"average_amount\": 800,\n        \"category\": \"Bonus\",\n        \"record_count\": 1,\n        \"total_amount\": 800,\n        \"type\": \"income\"\n    },\n    {\n        \"average_amount\": 450,\n        \"category\": \"Utilities\",\n        \"record_count\": 1,\n        \"total_amount\": 450,\n        \"type\": \"expense\"\n    },\n    {\n        \"average_amount\": 175.25,\n        \"category\": \"Groceries\",\n        \"record_count\": 2,\n        \"total_amount\": 350.5,\n        \"type\": \"expense\"\n    },\n    {\n        \"average_amount\": 300,\n        \"category\": \"Travel\",\n        \"record_count\": 1,\n        \"total_amount\": 300,\n        \"type\": \"expense\"\n    },\n    {\n        \"average_amount\": 60,\n        \"category\": \"Subscription\",\n        \"record_count\": 1,\n        \"total_amount\": 60,\n        \"type\": \"expense\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "monthly_summary",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/summary/monthly?user_id=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "monthly"
+          ],
+          "query": [
+            {
+              "key": "user_id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "monthly_summary",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/summary/monthly?user_id=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "monthly"
+              ],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:33:24 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "599"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"data\": [\n        {\n            \"month\": \"2024-01\",\n            \"net_balance\": 3599.5,\n            \"record_count\": 3,\n            \"total_expense\": 1400.5,\n            \"total_income\": 5000\n        },\n        {\n            \"month\": \"2024-02\",\n            \"net_balance\": 4600,\n            \"record_count\": 3,\n            \"total_expense\": 1200,\n            \"total_income\": 5800\n        },\n        {\n            \"month\": \"2024-03\",\n            \"net_balance\": 5000,\n            \"record_count\": 1,\n            \"total_expense\": 0,\n            \"total_income\": 5000\n        }\n    ],\n    \"months\": 3,\n    \"scope\": \"Alice Admin (ID: 1)\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Alice Admin\",\n        \"role\": \"admin\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "spending_alerts",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/summary/alerts?threshold=1000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "alerts"
+          ],
+          "query": [
+            {
+              "key": "threshold",
+              "value": "1000"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "spending_alerts",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/summary/alerts?threshold=1000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "alerts"
+              ],
+              "query": [
+                {
+                  "key": "threshold",
+                  "value": "1000"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:34:32 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "499"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"alerts_count\": 2,\n    \"message\": \"2 user(s) exceeded the ₹1,000.00 expense threshold\",\n    \"threshold\": 1000,\n    \"users_flagged\": [\n        {\n            \"exceeded_by\": 1600.5,\n            \"expense_records\": 3,\n            \"role\": \"admin\",\n            \"total_expense\": 2600.5,\n            \"user_id\": 1,\n            \"user_name\": \"Alice Admin\"\n        },\n        {\n            \"exceeded_by\": 650,\n            \"expense_records\": 3,\n            \"role\": \"analyst\",\n            \"total_expense\": 1650,\n            \"user_id\": 2,\n            \"user_name\": \"Bob Analyst\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "top_spender",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/summary/top-spenders?limit=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "top-spenders"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "top_spender",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/summary/top-spenders?limit=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "top-spenders"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:40:37 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "342"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"filter_category\": \"all\",\n    \"limit\": 1,\n    \"top_spenders\": [\n        {\n            \"avg_per_transaction\": 1200,\n            \"category\": \"Rent\",\n            \"last_transaction_date\": \"2024-02-10\",\n            \"rank\": 1,\n            \"role\": \"admin\",\n            \"total_spent\": 2400,\n            \"transaction_count\": 2,\n            \"user_id\": 1,\n            \"user_name\": \"Alice Admin\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "dashboard",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/summary/overview",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "overview"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "dashboard",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"role\": \"analyst\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/summary/overview",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "overview"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:41:41 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1622"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"financials\": {\n        \"net_balance\": 21839.5,\n        \"status\": \"surplus\",\n        \"total_expense\": 4460.5,\n        \"total_income\": 26300,\n        \"total_records\": 15\n    },\n    \"highlights\": {\n        \"best_income_month\": {\n            \"month\": \"2024-01\",\n            \"total_income\": 8500\n        },\n        \"top_expense_category\": {\n            \"category\": \"Rent\",\n            \"total\": 2400\n        }\n    },\n    \"recent_transactions\": [\n        {\n            \"amount\": 5000,\n            \"category\": \"Salary\",\n            \"date\": \"2024-04-01\",\n            \"id\": 15,\n            \"note\": \"April salary\",\n            \"type\": \"income\",\n            \"user_name\": \"Bob Analyst\"\n        },\n        {\n            \"amount\": 900,\n            \"category\": \"Electronics\",\n            \"date\": \"2024-03-20\",\n            \"id\": 14,\n            \"note\": \"Headphones\",\n            \"type\": \"expense\",\n            \"user_name\": \"Bob Analyst\"\n        },\n        {\n            \"amount\": 2000,\n            \"category\": \"Consulting\",\n            \"date\": \"2024-03-15\",\n            \"id\": 13,\n            \"note\": \"Strategy workshop\",\n            \"type\": \"income\",\n            \"user_name\": \"Bob Analyst\"\n        },\n        {\n            \"amount\": 60,\n            \"category\": \"Subscription\",\n            \"date\": \"2024-03-10\",\n            \"id\": 11,\n            \"note\": \"Streaming services\",\n            \"type\": \"expense\",\n            \"user_name\": \"Vera Viewer\"\n        },\n        {\n            \"amount\": 5000,\n            \"category\": \"Salary\",\n            \"date\": \"2024-03-05\",\n            \"id\": 12,\n            \"note\": \"March salary\",\n            \"type\": \"income\",\n            \"user_name\": \"Alice Admin\"\n        }\n    ],\n    \"record_health\": {\n        \"active_records\": 15,\n        \"deleted_records\": 0,\n        \"total_records_including_deleted\": 15\n    },\n    \"scope\": \"all_users\",\n    \"users\": {\n        \"active_users\": 3,\n        \"inactive_users\": 2,\n        \"total_users\": 5\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "analyst_create_user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "2",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"name\": \"Luna\", \"role\": \"viewer\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "analyst_create_user",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "2",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"name\": \"Luna\", \"role\": \"viewer\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "status": "FORBIDDEN",
+          "code": 403,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:43:23 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "97"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"Access denied.\",\n    \"required_roles\": [\n        \"admin\"\n    ],\n    \"your_role\": \"analyst\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "viewer_checks_overview",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "3",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"name\": \"Luna\", \"role\": \"viewer\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/summary/overview",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summary",
+            "overview"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "viewer_checks_overview",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "3",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"name\": \"Luna\", \"role\": \"viewer\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/summary/overview",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "summary",
+                "overview"
+              ]
+            }
+          },
+          "status": "METHOD NOT ALLOWED",
+          "code": 405,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:44:29 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "36"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"Method not allowed\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "viewer_deletes",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "3",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"name\": \"Luna\", \"role\": \"viewer\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/records/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "records",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "viewer_deletes",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "3",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"name\": \"Luna\", \"role\": \"viewer\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/records/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "records",
+                "1"
+              ]
+            }
+          },
+          "status": "FORBIDDEN",
+          "code": 403,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:45:48 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "55"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"User not found or account is inactive\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "inactive_user",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "4",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/records",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "records"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "inactive_user",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/records",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "records"
+              ]
+            }
+          },
+          "status": "FORBIDDEN",
+          "code": 403,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.11.9"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Apr 2026 05:51:06 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "55"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"User not found or account is inactive\"\n}"
+        }
+      ]
+    }
+  ]
+}
